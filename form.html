@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=id, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    Id <input type="number" name="" id="nid">
+    <P>
+        Name <input type="text" name="" id="nm">
+    <P>
+        Mobile <input type="tel" name="" id="nmb">
+    <P>
+        Gender <input type="radio" name="" id="male">Male
+        <input type="radio" name="" id="female">Female
+    <P>
+        Course <select name="" id="slc">
+            <option value=""></option>
+            <option value="DDD">DDD</option>
+            <option value="JEE">JEE</option>
+            <option value="C#">C#</option>
+        </select>
+    <P>
+        Skill <input type="checkbox" name="" id="HTML">HTML
+        <input type="checkbox" name="" id="CSS">CSS
+        <input type="checkbox" name="" id="JS"> JS
+    <P>
+        <input type="button" value="submit" onclick="snm(nid,nm,nmb,male,female,slc,HTML,CSS,JS,msg)">
+      <!-- / <input type="button" value="show window" onclick="shw()"> -->
+        <span id="msg"></span>
+
+        <script>
+            var ht = "";
+            function snm(nid, nm, nmb, male, female, slc, HTML, CSS, JS, msg) {
+                    msg.innerHTML = "";
+                    if (nid.value.length<1) {
+                        msg.innerHTML += " ENTER  ID";  
+                    }
+                   else if (nm.value.length<1) {
+                        msg.innerHTML += " ENTER  NAME";  
+                    }
+                    else if (nmb.value.length<1) {
+                        msg.innerHTML += " ENTER  MOBILE NO";  
+                    }
+                    else if (!male.checked && !female.checked) {
+                        msg.innerHTML += " SELECT GENDER";  
+                    }
+                    else if (slc.value.length<1) {
+                        msg.innerHTML += " SELECT COURSE";  
+                    }
+                    else if (!HTML.checked && !CSS.checked && !JS.checked) {
+                        msg.innerHTML += " SELECT SKILL";  
+                    }  
+                    else {
+                        var gen = "";
+                        
+                        if (male.checked) {
+                            gen= "male";
+                        }
+                        if (female.checked) {
+                            gen= "female";
+                        }
+                         var co =  ""; 
+                         if (HTML.checked) {
+                            co= "HTML";
+                        } 
+                        if (CSS.checked) {
+                            co= "CSS";
+                        } 
+                        if (JS.checked) {
+                            co= "JS";
+                        } 
+                         var h = `
+                        Id : ${nid.value}<p>
+                        Name :${nm.value}<p>
+                        Mobile : ${nmb.value}<p>
+                        Gender : ${gen}<p>
+                        Course :${slc.value}<p>
+                        Skill : ${co}<p>
+                         `   
+                         var w= window.open();
+                         w.document.write(h) ;
+                    }      
+            } 
+           
+        </script>
+
+</body>
+
+</html>
